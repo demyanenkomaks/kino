@@ -3,6 +3,7 @@
 namespace Modules\Kino\Filament\Clusters\Kino\Resources;
 
 use Filament\Forms\Components\Actions\Action;
+use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -12,7 +13,6 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use Modules\Kino\Filament\Clusters\Kino;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\Pages;
@@ -45,13 +45,13 @@ class CategoryResource extends Resource
                     TextInput::make('title')
                         ->label('Заголовок')
                         ->maxLength(255)
-                        ->visible(fn (?Model $record) => $record->categories()->exists()),
+                        ->visible(fn (?Category $record) => $record->categories()->exists()),
                     Textarea::make('description')
                         ->label('Описание')
                         ->rows(6)
                         ->autosize()
                         ->columnSpan('full')
-                        ->visible(fn (?Model $record) => $record->categories()->exists()),
+                        ->visible(fn (?Category $record) => $record->categories()->exists()),
                 ]
             ));
     }
@@ -164,7 +164,10 @@ class CategoryResource extends Resource
         ];
     }
 
-    public static function getFormFields()
+    /**
+     * @return array<Field>
+     */
+    public static function getFormFields(): array
     {
         return [
             Toggle::make('is_active')

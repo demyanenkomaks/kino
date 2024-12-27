@@ -2,6 +2,7 @@
 
 namespace Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\RelationManagers;
 
+use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -106,7 +107,10 @@ class CategoriesRelationManager extends RelationManager
             ->defaultSort('kino_category_sub.order');
     }
 
-    public static function getRepositoryPivotFields()
+    /**
+     * @return array<Field>
+     */
+    public static function getRepositoryPivotFields(): array
     {
         return [
             TextInput::make('title')
@@ -120,6 +124,11 @@ class CategoriesRelationManager extends RelationManager
         ];
     }
 
+    /**
+     * @param Model $ownerRecord
+     * @param string $pageClass
+     * @return string|null
+     */
     public static function getBadge(Model $ownerRecord, string $pageClass): ?string
     {
         return $ownerRecord->categories()->count();

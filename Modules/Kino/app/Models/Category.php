@@ -6,6 +6,23 @@ use App\Traits\HasActive;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
+/**
+ * Класс модели для таблицы "kino_categories".
+ *
+ * @property int $id
+ * @property string $created_at Добавлена
+ * @property string $updated_at Отредактирована
+ * @property boolean $is_active Активна
+ * @property integer $order Порядок
+ * @property string $slug Slug
+ * @property string $name Название
+ * @property string|null $title Заголовок
+ * @property string|null $description Описание
+ *
+ * @property Category $mainCategories Главные категории
+ * @property Category $categories Категории
+ */
+
 class Category extends Model
 {
     use HasActive;
@@ -18,8 +35,7 @@ class Category extends Model
     protected $fillable = ['is_active', 'order', 'slug', 'name', 'title', 'description'];
 
     /**
-     * Главные категории
-     * @return BelongsToMany
+     * @return BelongsToMany <Category, $this>
      */
     public function mainCategories(): BelongsToMany
     {
@@ -28,8 +44,7 @@ class Category extends Model
     }
 
     /**
-     * Категории
-     * @return BelongsToMany
+     * @return BelongsToMany <Category, $this>
      */
     public function categories(): BelongsToMany
     {

@@ -1,0 +1,27 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:categories\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: Modules/Kino/app/Filament/Clusters/Kino/Resources/CategoryResource/RelationManagers/CategoriesRelationManager.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:mainCategories\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: Modules/Kino/app/Filament/Clusters/Kino/Resources/CategoryResource/RelationManagers/MainCategoriesRelationManager.php
+
+		-
+			message: '#^Method Modules\\Kino\\Models\\Category\:\:categories\(\) should return Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany\<Modules\\Kino\\Models\\Category, \$this\(Modules\\Kino\\Models\\Category\)\> but returns Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany\<Modules\\Kino\\Models\\Category, Illuminate\\Database\\Eloquent\\Relations\\BelongsToMany\<Modules\\Kino\\Models\\Category, \$this\(Modules\\Kino\\Models\\Category\)\>\>\.$#'
+			identifier: return.type
+			count: 1
+			path: Modules/Kino/app/Models/Category.php
+
+		-
+			message: '#^Undefined variable\: \$this$#'
+			identifier: variable.undefined
+			count: 1
+			path: routes/console.php
+
+

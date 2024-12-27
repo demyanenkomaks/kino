@@ -112,14 +112,20 @@ class KinoServiceProvider extends ServiceProvider
         Blade::componentNamespace($componentNamespace, $this->nameLower);
     }
 
+
     /**
      * Get the services provided by the provider.
+     *
+     * @return array
      */
     public function provides(): array
     {
         return [];
     }
 
+    /**
+     * @return array<string>
+     */
     private function getPublishableViewPaths(): array
     {
         $paths = [];

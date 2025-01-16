@@ -12,17 +12,15 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property int $id
  * @property string $created_at Добавлена
  * @property string $updated_at Отредактирована
- * @property boolean $is_active Активна
- * @property integer $order Порядок
+ * @property bool $is_active Активна
+ * @property int $order Порядок
  * @property string $slug Slug
  * @property string $name Название
  * @property string|null $title Заголовок
  * @property string|null $description Описание
- *
  * @property Category $mainCategories Главные категории
  * @property Category $categories Категории
  */
-
 class Category extends Model
 {
     use HasActive;

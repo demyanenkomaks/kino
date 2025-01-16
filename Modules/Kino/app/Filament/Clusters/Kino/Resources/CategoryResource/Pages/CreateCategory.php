@@ -2,9 +2,8 @@
 
 namespace Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\Pages;
 
-use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource;
-use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
+use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource;
 
 class CreateCategory extends CreateRecord
 {

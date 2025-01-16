@@ -2,9 +2,6 @@
 
 namespace Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\RelationManagers;
 
-use Filament\Forms;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
@@ -13,15 +10,20 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 
-
 class MainCategoriesRelationManager extends RelationManager
 {
     protected static string $relationship = 'mainCategories';
+
     protected static ?string $inverseRelationship = 'categories';
+
     protected static ?string $title = 'Главные категории';
+
     protected static ?string $modelLabel = 'Главная категория';
+
     protected static ?string $pluralModelLabel = 'Главные категории';
+
     protected static ?string $recordTitleAttribute = 'name';
+
     protected static bool $isLazy = false;
 
     public function form(Form $form): Form
@@ -51,7 +53,10 @@ class MainCategoriesRelationManager extends RelationManager
                     ->limit(100)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getCharacterLimit()) return null;
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -61,7 +66,10 @@ class MainCategoriesRelationManager extends RelationManager
                     ->limit(100)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getCharacterLimit()) return null;
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -86,7 +94,7 @@ class MainCategoriesRelationManager extends RelationManager
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->mountUsing(fn($record, $form) => $form->fill($record->pivot->toArray())),
+                    ->mountUsing(fn ($record, $form) => $form->fill($record->pivot->toArray())),
                 Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([

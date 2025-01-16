@@ -14,15 +14,20 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource;
 
-
 class CategoriesRelationManager extends RelationManager
 {
     protected static string $relationship = 'categories';
+
     protected static ?string $inverseRelationship = 'mainCategories';
+
     protected static ?string $title = 'Категории';
+
     protected static ?string $modelLabel = 'Категория';
+
     protected static ?string $pluralModelLabel = 'Категории';
+
     protected static ?string $recordTitleAttribute = 'name';
+
     protected static bool $isLazy = false;
 
     public function form(Form $form): Form
@@ -56,7 +61,10 @@ class CategoriesRelationManager extends RelationManager
                     ->limit(100)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getCharacterLimit()) return null;
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -66,7 +74,10 @@ class CategoriesRelationManager extends RelationManager
                     ->limit(100)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getCharacterLimit()) return null;
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -86,16 +97,16 @@ class CategoriesRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\AttachAction::make()
-                    ->form(fn(Tables\Actions\AttachAction $action): array => array_merge([$action->getRecordSelect()], self::getRepositoryPivotFields()))
+                    ->form(fn (Tables\Actions\AttachAction $action): array => array_merge([$action->getRecordSelect()], self::getRepositoryPivotFields()))
                     ->preloadRecordSelect()
                     ->color('primary'),
                 Tables\Actions\CreateAction::make()
-                    ->form(fn(Tables\Actions\CreateAction $action, Form $form): array => array_merge(CategoryResource::getFormFields(), self::getRepositoryPivotFields()))
+                    ->form(fn (Tables\Actions\CreateAction $action, Form $form): array => array_merge(CategoryResource::getFormFields(), self::getRepositoryPivotFields()))
                     ->color('gray'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make()
-                    ->mountUsing(fn($record, $form) => $form->fill($record->pivot->toArray())),
+                    ->mountUsing(fn ($record, $form) => $form->fill($record->pivot->toArray())),
                 Tables\Actions\DetachAction::make(),
             ])
             ->bulkActions([
@@ -124,11 +135,6 @@ class CategoriesRelationManager extends RelationManager
         ];
     }
 
-    /**
-     * @param Model $ownerRecord
-     * @param string $pageClass
-     * @return string|null
-     */
     public static function getBadge(Model $ownerRecord, string $pageClass): ?string
     {
         return $ownerRecord->categories()->count();

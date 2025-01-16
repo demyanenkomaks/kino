@@ -7,11 +7,15 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
+use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
+use Filament\Resources\Resource;
+use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
+use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
 use Modules\Kino\Filament\Clusters\Kino;
@@ -19,21 +23,23 @@ use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\Pages;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\RelationManagers\CategoriesRelationManager;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\RelationManagers\MainCategoriesRelationManager;
 use Modules\Kino\Models\Category;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Table;
-
 
 class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
+
     protected static ?string $navigationIcon = 'heroicon-s-tag';
+
     protected static bool $hasTitleCaseModelLabel = false;
+
     protected static ?string $modelLabel = 'Категория';
+
     protected static ?string $pluralModelLabel = 'Категории';
+
     protected static ?string $recordTitleAttribute = 'name';
+
     protected static ?string $cluster = Kino::class;
+
     protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
@@ -95,7 +101,10 @@ class CategoryResource extends Resource
                     ->limit(100)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getCharacterLimit()) return null;
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -105,7 +114,10 @@ class CategoryResource extends Resource
                     ->limit(100)
                     ->tooltip(function (TextColumn $column): ?string {
                         $state = $column->getState();
-                        if (strlen($state) <= $column->getCharacterLimit()) return null;
+                        if (strlen($state) <= $column->getCharacterLimit()) {
+                            return null;
+                        }
+
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -130,10 +142,10 @@ class CategoryResource extends Resource
                     ->trueLabel('Главные категории')
                     ->falseLabel('Категории')
                     ->queries(
-                        true: fn(Builder $query) => $query->has('categories'),
-                        false: fn(Builder $query) => $query->has('mainCategories'),
-                        blank: fn(Builder $query) => $query,
-                    )
+                        true: fn (Builder $query) => $query->has('categories'),
+                        false: fn (Builder $query) => $query->has('mainCategories'),
+                        blank: fn (Builder $query) => $query,
+                    ),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -181,8 +193,9 @@ class CategoryResource extends Resource
                 ->maxLength(255)
                 ->live(onBlur: true)
                 ->afterStateUpdated(function (Set $set, ?string $state, string $operation) {
-                    if ($operation === 'create')
+                    if ($operation === 'create') {
                         $set('slug', Str::slug($state));
+                    }
                 }),
             TextInput::make('slug')
                 ->label('Slug')
@@ -199,8 +212,8 @@ class CategoryResource extends Resource
         ];
     }
 
-//    public static function getNavigationBadge(): ?string
-//    {
-//        return static::getModel()::count();
-//    }
+    //    public static function getNavigationBadge(): ?string
+    //    {
+    //        return static::getModel()::count();
+    //    }
 }

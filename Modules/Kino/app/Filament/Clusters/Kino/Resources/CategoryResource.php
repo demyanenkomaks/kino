@@ -81,6 +81,11 @@ class CategoryResource extends Resource
                     ->label('Название')
                     ->sortable()
                     ->searchable(),
+                TextColumn::make('slug')
+                    ->label('Slug')
+                    ->sortable()
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('mainCategories.name')
                     ->label('Главные категории')
                     ->listWithLineBreaks()

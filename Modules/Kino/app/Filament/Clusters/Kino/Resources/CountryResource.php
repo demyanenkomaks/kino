@@ -16,12 +16,12 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Modules\Kino\Filament\Clusters\Kino;
-use Modules\Kino\Filament\Clusters\Kino\Resources\CountriesResource\Pages;
-use Modules\Kino\Models\Countries;
+use Modules\Kino\Filament\Clusters\Kino\Resources\CountryResource\Pages;
+use Modules\Kino\Models\Country;
 
-class CountriesResource extends Resource
+class CountryResource extends Resource
 {
-    protected static ?string $model = Countries::class;
+    protected static ?string $model = Country::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-tag';
 
@@ -122,8 +122,8 @@ class CountriesResource extends Resource
     {
         return [
             'index' => Pages\ListCountries::route('/'),
-            'create' => Pages\CreateCountries::route('/create'),
-            'edit' => Pages\EditCountries::route('/{record}/edit'),
+            'create' => Pages\CreateCountry::route('/create'),
+            'edit' => Pages\EditCountry::route('/{record}/edit'),
         ];
     }
 }

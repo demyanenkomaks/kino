@@ -3,7 +3,9 @@
 namespace Modules\Kino\Models;
 
 use App\Traits\HasActive;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Kino\Database\Factories\CountryFactory;
 
 /**
  * Класс модели для таблицы "kino_countries".
@@ -16,9 +18,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $slug Slug
  * @property string $name Название
  */
-class Countries extends Model
+class Country extends Model
 {
-    use HasActive;
+    use HasActive, HasFactory;
 
     protected $table = 'kino_countries';
 
@@ -26,4 +28,9 @@ class Countries extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = ['is_active', 'order', 'slug', 'name'];
+
+    protected static function newFactory()
+    {
+        return CountryFactory::new();
+    }
 }

@@ -1,8 +1,4 @@
 #!/bin/sh
 
-# Run Laravel Pint
-files=$(git diff --cached --name-only --diff-filter=ACM -- '*.php');
-vendor/bin/pint $files
-
-# Run Laravel PhpStan
-./vendor/bin/phpstan analyse
+# Run Laravel Pint and PhpStan
+./vendor/bin/pint && ./vendor/bin/phpstan analyse && git add .

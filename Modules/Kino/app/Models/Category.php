@@ -46,6 +46,7 @@ class Category extends Model
      */
     public function categories(): BelongsToMany
     {
+        /* @phpstan-ignore return.type */
         return $this->belongsToMany(Category::class, 'kino_category_sub', 'category_id', 'sub_category_id')
             ->withPivot(['order', 'title', 'description'])
             ->orderBy('kino_category_sub.order');

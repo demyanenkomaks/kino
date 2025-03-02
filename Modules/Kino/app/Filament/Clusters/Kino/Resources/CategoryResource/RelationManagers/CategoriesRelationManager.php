@@ -137,6 +137,7 @@ class CategoriesRelationManager extends RelationManager
 
     public static function getBadge(Model $ownerRecord, string $pageClass): ?string
     {
+        /* @phpstan-ignore method.notFound */
         return $ownerRecord->categories()->count();
     }
 }

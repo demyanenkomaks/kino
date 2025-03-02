@@ -1,0 +1,11 @@
+{
+    "name": "Kino",
+    "alias": "kino",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Kino\\Providers\\KinoServiceProvider"
+    ],
+    "files": []
+}

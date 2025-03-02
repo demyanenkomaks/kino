@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Run Laravel Pint and PhpStan
+./vendor/bin/pint && ./vendor/bin/phpstan analyse && git add .

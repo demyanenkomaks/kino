@@ -1,0 +1,30 @@
+{
+    "name": "grch/kino",
+    "description": "",
+    "authors": [
+        {
+            "name": "DemMaks",
+            "email": "demyanenkomaks0@gmail.ru"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Kino\\": "app/",
+            "Modules\\Kino\\Database\\Factories\\": "database/factories/",
+            "Modules\\Kino\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\Kino\\Tests\\": "tests/"
+        }
+    }
+}

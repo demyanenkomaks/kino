@@ -10,6 +10,7 @@ use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
+use Filament\Support\Enums\MaxWidth;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -25,8 +26,8 @@ class AdminPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            ->id('admin')
-            ->path('admin')
+            ->id(config('filament.admin_path'))
+            ->path(config('filament.admin_path'))
             ->login()
             ->colors([
                 'primary' => Color::Amber,
@@ -55,6 +56,8 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(ModulesPlugin::make());
+            ->plugin(ModulesPlugin::make())
+            ->maxContentWidth(MaxWidth::Full)
+            ->topNavigation();
     }
 }

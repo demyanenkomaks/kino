@@ -3,17 +3,17 @@
 namespace Modules\Kino\Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Modules\Kino\Models\Country;
 
-class KinoDatabaseSeeder extends Seeder
+class CountrySeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $this->call([
-            CategorySeeder::class,
-            CountrySeeder::class,
-        ]);
+        Country::factory()
+            ->count(50)
+            ->create();
     }
 }

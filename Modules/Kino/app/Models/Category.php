@@ -3,8 +3,10 @@
 namespace Modules\Kino\Models;
 
 use App\Traits\HasActive;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Modules\Kino\Database\Factories\CategoryFactory;
 
 /**
  * Класс модели для таблицы "kino_categories".
@@ -23,7 +25,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  */
 class Category extends Model
 {
-    use HasActive;
+    use HasActive, HasFactory;
 
     protected $table = 'kino_categories';
 
@@ -31,6 +33,11 @@ class Category extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = ['is_active', 'order', 'slug', 'name', 'title', 'description'];
+
+    protected static function newFactory()
+    {
+        return CategoryFactory::new();
+    }
 
     /**
      * @return BelongsToMany <Category, $this>

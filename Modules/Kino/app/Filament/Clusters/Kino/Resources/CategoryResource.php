@@ -51,13 +51,13 @@ class CategoryResource extends Resource
                     TextInput::make('title')
                         ->label('Заголовок')
                         ->maxLength(255)
-                        ->visible(fn (?Category $record) => $record->categories()->exists()),
+                        ->visible(fn (?Category $record) => $record?->categories()->exists()),
                     Textarea::make('description')
                         ->label('Описание')
                         ->rows(6)
                         ->autosize()
                         ->columnSpan('full')
-                        ->visible(fn (?Category $record) => $record->categories()->exists()),
+                        ->visible(fn (?Category $record) => $record?->categories()->exists()),
                 ]
             ));
     }

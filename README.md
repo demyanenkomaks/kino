@@ -14,16 +14,11 @@
 5. Генерируем ключ приложения `php artisan key:generate`
 6. Запускаем миграции `php artisan migrate`
 7. Создание симолический ссылок `php artisan storage:link`
-8. Готово!
+8. Создание пользователя `php artisan make:filament-user`
+9. Готово!
 
 
 В случае возникновения ошибок с кешом:
 ```
-php artisan optimize:clear // Очищаем кеш laravel
-php artisan filament:optimize-clear // Очищаем кеш filament
-
-php artisan optimize // Создаем кеш laravel
-php artisan filament:optimize // Создаем кеш filament
-
-composer cache // очищает и создает новый кеш (заменяет 4 команды указнные выше)
+composer cache // очищает и создает новый кеш
 ```

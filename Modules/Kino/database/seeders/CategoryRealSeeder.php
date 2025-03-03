@@ -4,6 +4,7 @@ namespace Modules\Kino\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class CategoryRealSeeder extends Seeder
 {
@@ -12,6 +13,11 @@ class CategoryRealSeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        DB::table('kino_category_sub')->truncate();
+        DB::table('kino_categories')->truncate();
+        Schema::enableForeignKeyConstraints();
+
         // Главные категории
         DB::table('kino_categories')->insert([
             ['id' => 1, 'slug' => 'movies', 'name' => 'Фильмы', 'title' => 'Фильмы смотреть онлайн', 'description' => 'Фильмы — это искусство, способное перенести зрителя в миры, полные эмоций и приключений.'],

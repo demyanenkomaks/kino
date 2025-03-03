@@ -12,6 +12,8 @@ class CountryRealSeeder extends Seeder
      */
     public function run(): void
     {
+        DB::table('kino_countries')->truncate();
+
         DB::table('kino_countries')->insert([
             ['slug' => 'af', 'name' => 'Афганистан'],
             ['slug' => 'al', 'name' => 'Албания'],
@@ -24,7 +26,7 @@ class CountryRealSeeder extends Seeder
             ['slug' => 'ag', 'name' => 'Антигуа и Барбуда'],
             ['slug' => 'ar', 'name' => 'Аргентина'],
             ['slug' => 'am', 'name' => 'Армения'],
-            ['slug' => 'aw', 'name' => 'А鲁uba'],
+            ['slug' => 'aw', 'name' => 'Аруба'],
             ['slug' => 'au', 'name' => 'Австралия'],
             ['slug' => 'at', 'name' => 'Австрия'],
             ['slug' => 'az', 'name' => 'Азербайджан'],
@@ -108,7 +110,7 @@ class CountryRealSeeder extends Seeder
             ['slug' => 'gy', 'name' => 'Гайана'],
             ['slug' => 'ht', 'name' => 'Гаити'],
             ['slug' => 'hm', 'name' => 'Остров Херд и Макдональд'],
-            ['slug' => 'va', 'name' => 'Святой Престол (Государство Ватикан)'],
+            ['slug' => 'va', 'name' => 'Ватикан'],
             ['slug' => 'hn', 'name' => 'Гондурас'],
             ['slug' => 'hk', 'name' => 'Гонконг'],
             ['slug' => 'hu', 'name' => 'Венгрия'],
@@ -195,7 +197,6 @@ class CountryRealSeeder extends Seeder
             ['slug' => 'ro', 'name' => 'Румыния'],
             ['slug' => 'ru', 'name' => 'Россия'],
             ['slug' => 'rw', 'name' => 'Руанда'],
-            ['slug' => 'bl', 'name' => 'Сен-Бартеле弥'],
             ['slug' => 'sh', 'name' => 'Остров Святой Елены'],
             ['slug' => 'kn', 'name' => 'Сент-Китс и Невис'],
             ['slug' => 'lc', 'name' => 'Сент-Люсия'],
@@ -222,7 +223,7 @@ class CountryRealSeeder extends Seeder
             ['slug' => 'lk', 'name' => 'Шри-Ланка'],
             ['slug' => 'sd', 'name' => 'Судан'],
             ['slug' => 'sr', 'name' => 'Суринам'],
-            ['slug' => 'sj', 'name' => 'Сvalbard и Jan Mayen'],
+            ['slug' => 'sj', 'name' => 'Шпицберген и Ян-Майен'],
             ['slug' => 'sz', 'name' => 'Эсватини'],
             ['slug' => 'se', 'name' => 'Швеция'],
             ['slug' => 'ch', 'name' => 'Швейцария'],
@@ -244,16 +245,15 @@ class CountryRealSeeder extends Seeder
             ['slug' => 'ug', 'name' => 'Уганда'],
             ['slug' => 'ua', 'name' => 'Украина'],
             ['slug' => 'ae', 'name' => 'Объединённые Арабские Эмираты'],
-            ['slug' => 'gb', 'name' => 'Великобритания'],
+            ['slug' => 'uk', 'name' => 'Великобритания'],
             ['slug' => 'us', 'name' => 'США'],
-            ['slug' => 'um', 'name' => 'Внешние малые острова США'],
             ['slug' => 'uy', 'name' => 'Уругвай'],
             ['slug' => 'uz', 'name' => 'Узбекистан'],
             ['slug' => 'vu', 'name' => 'Вануату'],
             ['slug' => 've', 'name' => 'Венесуэла'],
             ['slug' => 'vn', 'name' => 'Вьетнам'],
-            ['slug' => 'vg', 'name' => 'Британские Девственные Острова'],
-            ['slug' => 'vi', 'name' => 'Американские Девственные Острова'],
+            ['slug' => 'vg', 'name' => 'Виргинские Острова (Великобритания)'],
+            ['slug' => 'vi', 'name' => 'Виргинские Острова (США)'],
             ['slug' => 'wf', 'name' => 'Уоллис и Футуна'],
             ['slug' => 'eh', 'name' => 'Западная Сахара'],
             ['slug' => 'ye', 'name' => 'Йемен'],

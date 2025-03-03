@@ -29,6 +29,10 @@ class Country extends Model
      */
     protected $fillable = ['is_active', 'order', 'slug', 'name'];
 
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
     protected static function newFactory()
     {
         return CountryFactory::new();

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "19e634c21218871d393510c06814def1",
+    "content-hash": "4efc5b006b38207d9a9852d126180f54",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3220,6 +3220,48 @@
                 }
             ],
             "time": "2025-02-26T00:57:32+00:00"
+        },
+        {
+            "name": "maksde/helpers",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/demyanenkomaks/helpers.git",
+                "reference": "968bdd4a6f5fca5b45e23139ef2c7a93c4703e6b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/demyanenkomaks/helpers/zipball/968bdd4a6f5fca5b45e23139ef2c7a93c4703e6b",
+                "reference": "968bdd4a6f5fca5b45e23139ef2c7a93c4703e6b",
+                "shasum": ""
+            },
+            "require": {
+                "filament/filament": "^3.2",
+                "laravel/framework": "^11.9",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Maksde\\Helpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Demyanenko Maksim",
+                    "email": "demyanenkomaks0@gmail.com"
+                }
+            ],
+            "description": "Helpers for Laravel and Filament",
+            "support": {
+                "issues": "https://github.com/demyanenkomaks/helpers/issues",
+                "source": "https://github.com/demyanenkomaks/helpers/tree/v2.0.0"
+            },
+            "time": "2025-02-21T08:13:58+00:00"
         },
         {
             "name": "masterminds/html5",

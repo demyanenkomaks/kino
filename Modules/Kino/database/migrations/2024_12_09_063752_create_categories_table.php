@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Kino\Database\Seeders\CategoryRealSeeder;
 
 return new class extends Migration
 {
@@ -38,9 +37,6 @@ return new class extends Migration
             $table->string('title')->comment('Заголовок');
             $table->text('description')->nullable()->comment('Описание');
         });
-
-        $seeder = new CategoryRealSeeder;
-        $seeder->run();
     }
 
     /**

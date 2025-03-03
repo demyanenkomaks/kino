@@ -13,3 +13,7 @@ parameters:
         - Modules/
         - public/
         - routes/
+
+    excludePaths:
+        - tests/*/*
+        - Modules/*/tests/*/*

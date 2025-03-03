@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Kino\Database\Seeders\CountryRealSeeder;
 
 return new class extends Migration
 {
@@ -22,9 +21,6 @@ return new class extends Migration
             $table->string('slug')->index()->unique()->comment('Slug');
             $table->string('name')->index()->comment('Название');
         });
-
-        $seeder = new CountryRealSeeder;
-        $seeder->run();
     }
 
     /**

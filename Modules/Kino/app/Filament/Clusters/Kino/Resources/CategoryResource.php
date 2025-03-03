@@ -198,7 +198,7 @@ class CategoryResource extends Resource
                 ->label('Slug')
                 ->required()
                 ->maxLength(255)
-                ->unique(ignoreRecord: true)
+                ->unique()
                 ->suffixActions([
                     Action::make('Обновить')
                         ->icon('heroicon-o-arrow-path')

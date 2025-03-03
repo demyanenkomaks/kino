@@ -38,7 +38,7 @@ class Category extends Model
         'is_active' => 'boolean',
     ];
 
-    protected static function newFactory()
+    protected static function newFactory(): CategoryFactory
     {
         return CategoryFactory::new();
     }

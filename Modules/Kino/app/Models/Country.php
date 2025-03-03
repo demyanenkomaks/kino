@@ -33,7 +33,7 @@ class Country extends Model
         'is_active' => 'boolean',
     ];
 
-    protected static function newFactory()
+    protected static function newFactory(): CountryFactory
     {
         return CountryFactory::new();
     }

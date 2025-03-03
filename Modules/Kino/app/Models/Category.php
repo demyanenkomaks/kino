@@ -34,7 +34,11 @@ class Category extends Model
      */
     protected $fillable = ['is_active', 'order', 'slug', 'name', 'title', 'description'];
 
-    protected static function newFactory()
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    protected static function newFactory(): CategoryFactory
     {
         return CategoryFactory::new();
     }

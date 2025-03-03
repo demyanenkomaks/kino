@@ -17,11 +17,20 @@ class CountryFactory extends Factory
      */
     public function definition(): array
     {
-        $title = fake()->sentence(2);
+        $title = fake()->words(rand(1, 2), true);
 
         return [
-            'name' => rtrim($title, '.'),
+            'name' => $title,
             'slug' => Str::slug($title),
         ];
+    }
+
+    public function notActive(): Factory
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'is_active' => false,
+            ];
+        });
     }
 }

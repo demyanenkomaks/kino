@@ -14,8 +14,8 @@ class CategorySeeder extends Seeder
     {
         Category::factory()
             ->hasAttached(
-                Category::factory()->count(10),
-                ['title' => fake()->sentence(2)]
+                Category::factory()->count(5),
+                ['title' => fake()->words(rand(1, 2), true)]
             )
             ->count(3)
             ->create();

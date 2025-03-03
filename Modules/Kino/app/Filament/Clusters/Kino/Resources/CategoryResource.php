@@ -3,7 +3,7 @@
 namespace Modules\Kino\Filament\Clusters\Kino\Resources;
 
 use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\Field;
+use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -13,11 +13,12 @@ use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
+use Maksde\Helpers\Resource\Boolean;
+use Maksde\Helpers\Resource\Datetime;
 use Modules\Kino\Filament\Clusters\Kino;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\Pages;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\RelationManagers\CategoriesRelationManager;
@@ -26,6 +27,8 @@ use Modules\Kino\Models\Category;
 
 class CategoryResource extends Resource
 {
+    use Boolean, Datetime;
+
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-tag';
@@ -73,10 +76,7 @@ class CategoryResource extends Resource
                     ->label('Порядок')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                ToggleColumn::make('is_active')
-                    ->label('Активный')
-                    ->onColor('success')
-                    ->offColor('danger'),
+                self::toggleColumn('is_active', 'Активный'),
                 TextColumn::make('name')
                     ->label('Название')
                     ->sortable()
@@ -126,16 +126,8 @@ class CategoryResource extends Resource
                         return $state;
                     })
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('created_at')
-                    ->label('Создано')
-                    ->sortable()
-                    ->dateTime()
-                    ->toggleable(),
-                TextColumn::make('updated_at')
-                    ->label('Обновлено')
-                    ->sortable()
-                    ->dateTime()
-                    ->toggleable(),
+                self::datetimeTextColumn('created_at', 'Добавлена'),
+                self::datetimeTextColumn('updated_at', 'Отредактирована'),
             ])
             ->filters([
                 TernaryFilter::make('is_active')
@@ -151,6 +143,8 @@ class CategoryResource extends Resource
                         false: fn (Builder $query) => $query->has('mainCategories'),
                         blank: fn (Builder $query) => $query,
                     ),
+                self::datetimeFilter('created_at', 'Добавлена'),
+                self::datetimeFilter('updated_at', 'Отредактирована'),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -182,16 +176,14 @@ class CategoryResource extends Resource
     }
 
     /**
-     * @return array<Field>
+     * @return array<int, Placeholder|TextInput|Toggle>
      */
     public static function getFormFields(): array
     {
         return [
-            Toggle::make('is_active')
-                ->label('Активный')
-                ->onColor('success')
-                ->offColor('danger')
-                ->columnSpan('full'),
+            self::datetimePlaceholder('created_at', 'Добавлена'),
+            self::datetimePlaceholder('updated_at', 'Отредактирована'),
+            self::toggleForm('is_active', 'Активный', 'full'),
             TextInput::make('name')
                 ->label('Название')
                 ->required()
@@ -206,7 +198,7 @@ class CategoryResource extends Resource
                 ->label('Slug')
                 ->required()
                 ->maxLength(255)
-                ->unique(ignoreRecord: true)
+                ->unique()
                 ->suffixActions([
                     Action::make('Обновить')
                         ->icon('heroicon-o-arrow-path')
@@ -216,9 +208,4 @@ class CategoryResource extends Resource
                 ]),
         ];
     }
-
-    //    public static function getNavigationBadge(): ?string
-    //    {
-    //        return static::getModel()::count();
-    //    }
 }

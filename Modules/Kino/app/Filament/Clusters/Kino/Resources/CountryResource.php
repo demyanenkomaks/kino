@@ -13,16 +13,17 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Maksde\Helpers\Resource\Boolean;
-use Maksde\Helpers\Resource\Datetime;
+use Maksde\Helpers\Filament\Columns\BooleanIconColumn;
+use Maksde\Helpers\Filament\Columns\CreateUpdateColumns;
+use Maksde\Helpers\Filament\Filters\CreateUpdateFilters;
+use Maksde\Helpers\Filament\Forms\BooleanToggleForm;
+use Maksde\Helpers\Filament\Forms\CreateUpdatePlaceholders;
 use Modules\Kino\Filament\Clusters\Kino;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CountryResource\Pages;
 use Modules\Kino\Models\Country;
 
 class CountryResource extends Resource
 {
-    use Boolean, Datetime;
-
     protected static ?string $model = Country::class;
 
     protected static ?string $navigationIcon = 'heroicon-s-tag';
@@ -43,9 +44,8 @@ class CountryResource extends Resource
     {
         return $form
             ->schema([
-                self::datetimePlaceholder('created_at', 'Добавлена'),
-                self::datetimePlaceholder('updated_at', 'Отредактирована'),
-                self::toggleForm('is_active', 'Активный', 'full'),
+                ...CreateUpdatePlaceholders::make(),
+                BooleanToggleForm::make('is_active', 'Активный', 'full'),
                 TextInput::make('name')
                     ->label('Название')
                     ->required()
@@ -82,7 +82,7 @@ class CountryResource extends Resource
                     ->label('Порядок')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                self::toggleColumn('is_active', 'Активный'),
+                BooleanIconColumn::make('is_active', 'Активный'),
                 TextColumn::make('name')
                     ->label('Название')
                     ->sortable()
@@ -92,15 +92,13 @@ class CountryResource extends Resource
                     ->sortable()
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                self::datetimeTextColumn('created_at', 'Добавлена'),
-                self::datetimeTextColumn('updated_at', 'Отредактирована'),
+                ...CreateUpdateColumns::make(),
             ])
             ->filters([
                 TernaryFilter::make('is_active')
                     ->label('Активный')
                     ->placeholder('Все'),
-                self::datetimeFilter('created_at', 'Добавлена'),
-                self::datetimeFilter('updated_at', 'Отредактирована'),
+                ...CreateUpdateFilters::make(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

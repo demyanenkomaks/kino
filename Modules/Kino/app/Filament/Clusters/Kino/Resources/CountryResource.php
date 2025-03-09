@@ -13,11 +13,11 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
-use Maksde\Helpers\Filament\Columns\BooleanIconColumn;
-use Maksde\Helpers\Filament\Columns\CreateUpdateColumns;
-use Maksde\Helpers\Filament\Filters\CreateUpdateFilters;
-use Maksde\Helpers\Filament\Forms\BooleanToggleForm;
-use Maksde\Helpers\Filament\Forms\CreateUpdatePlaceholders;
+use Maksde\Helpers\Filament\Forms\Components\BooleanToggleForm;
+use Maksde\Helpers\Filament\Forms\Components\CreateUpdatePlaceholders;
+use Maksde\Helpers\Filament\Tables\Columns\BooleanIconColumn;
+use Maksde\Helpers\Filament\Tables\Columns\CreateUpdateColumns;
+use Maksde\Helpers\Filament\Tables\Filters\CreateUpdateFilters;
 use Modules\Kino\Filament\Clusters\Kino;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CountryResource\Pages;
 use Modules\Kino\Models\Country;
@@ -45,7 +45,7 @@ class CountryResource extends Resource
         return $form
             ->schema([
                 ...CreateUpdatePlaceholders::make(),
-                BooleanToggleForm::make('is_active', 'Активный', 'full'),
+                BooleanToggleForm::make('is_active', 'Активный'),
                 TextInput::make('name')
                     ->label('Название')
                     ->required()

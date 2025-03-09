@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d2440bb0b779d25d61e669ef6fbc48e9",
+    "content-hash": "92de801ea5f2003eab5ae01f89e57350",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3223,16 +3223,16 @@
         },
         {
             "name": "maksde/helpers",
-            "version": "3.0.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/demyanenkomaks/helpers.git",
-                "reference": "1b286a9aa4312b318c7a5e95a17c91df46f2e8e9"
+                "reference": "12c8b8816e6511a7fb06ea2e9bc1ee126ccd309c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/demyanenkomaks/helpers/zipball/1b286a9aa4312b318c7a5e95a17c91df46f2e8e9",
-                "reference": "1b286a9aa4312b318c7a5e95a17c91df46f2e8e9",
+                "url": "https://api.github.com/repos/demyanenkomaks/helpers/zipball/12c8b8816e6511a7fb06ea2e9bc1ee126ccd309c",
+                "reference": "12c8b8816e6511a7fb06ea2e9bc1ee126ccd309c",
                 "shasum": ""
             },
             "require": {
@@ -3266,9 +3266,9 @@
             "description": "Helpers for Laravel and Filament",
             "support": {
                 "issues": "https://github.com/demyanenkomaks/helpers/issues",
-                "source": "https://github.com/demyanenkomaks/helpers/tree/v3.0.0"
+                "source": "https://github.com/demyanenkomaks/helpers/tree/v4.0.0"
             },
-            "time": "2025-03-06T09:25:41+00:00"
+            "time": "2025-03-09T12:59:19+00:00"
         },
         {
             "name": "masterminds/html5",

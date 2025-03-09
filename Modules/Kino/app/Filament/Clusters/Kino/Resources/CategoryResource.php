@@ -17,11 +17,11 @@ use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Str;
-use Maksde\Helpers\Filament\Columns\BooleanToggleColumn;
-use Maksde\Helpers\Filament\Columns\CreateUpdateColumns;
-use Maksde\Helpers\Filament\Filters\CreateUpdateFilters;
-use Maksde\Helpers\Filament\Forms\BooleanToggleForm;
-use Maksde\Helpers\Filament\Forms\CreateUpdatePlaceholders;
+use Maksde\Helpers\Filament\Forms\Components\BooleanToggleForm;
+use Maksde\Helpers\Filament\Forms\Components\CreateUpdatePlaceholders;
+use Maksde\Helpers\Filament\Tables\Columns\BooleanToggleColumn;
+use Maksde\Helpers\Filament\Tables\Columns\CreateUpdateColumns;
+use Maksde\Helpers\Filament\Tables\Filters\CreateUpdateFilters;
 use Modules\Kino\Filament\Clusters\Kino;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\Pages;
 use Modules\Kino\Filament\Clusters\Kino\Resources\CategoryResource\RelationManagers\CategoriesRelationManager;
@@ -181,7 +181,7 @@ class CategoryResource extends Resource
     {
         return [
             ...CreateUpdatePlaceholders::make(),
-            BooleanToggleForm::make('is_active', 'Активный', 'full'),
+            BooleanToggleForm::make('is_active', 'Активный'),
             TextInput::make('name')
                 ->label('Название')
                 ->required()

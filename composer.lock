@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4efc5b006b38207d9a9852d126180f54",
+    "content-hash": "92de801ea5f2003eab5ae01f89e57350",
     "packages": [
         {
             "name": "anourvalar/eloquent-serialize",
@@ -3223,16 +3223,16 @@
         },
         {
             "name": "maksde/helpers",
-            "version": "2.0.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/demyanenkomaks/helpers.git",
-                "reference": "968bdd4a6f5fca5b45e23139ef2c7a93c4703e6b"
+                "reference": "12c8b8816e6511a7fb06ea2e9bc1ee126ccd309c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/demyanenkomaks/helpers/zipball/968bdd4a6f5fca5b45e23139ef2c7a93c4703e6b",
-                "reference": "968bdd4a6f5fca5b45e23139ef2c7a93c4703e6b",
+                "url": "https://api.github.com/repos/demyanenkomaks/helpers/zipball/12c8b8816e6511a7fb06ea2e9bc1ee126ccd309c",
+                "reference": "12c8b8816e6511a7fb06ea2e9bc1ee126ccd309c",
                 "shasum": ""
             },
             "require": {
@@ -3241,6 +3241,13 @@
                 "php": "^8.2"
             },
             "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Maksde\\Helpers\\HelpersServiceProvider"
+                    ]
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Maksde\\Helpers\\": "src/"
@@ -3259,9 +3266,9 @@
             "description": "Helpers for Laravel and Filament",
             "support": {
                 "issues": "https://github.com/demyanenkomaks/helpers/issues",
-                "source": "https://github.com/demyanenkomaks/helpers/tree/v2.0.0"
+                "source": "https://github.com/demyanenkomaks/helpers/tree/v4.0.0"
             },
-            "time": "2025-02-21T08:13:58+00:00"
+            "time": "2025-03-09T12:59:19+00:00"
         },
         {
             "name": "masterminds/html5",

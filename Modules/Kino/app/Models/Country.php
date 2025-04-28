@@ -20,7 +20,8 @@ use Modules\Kino\Database\Factories\CountryFactory;
  */
 class Country extends Model
 {
-    use HasActive, HasFactory;
+    use HasActive;
+    use HasFactory;
 
     protected $table = 'kino_countries';
 
@@ -29,12 +30,15 @@ class Country extends Model
      */
     protected $fillable = ['is_active', 'order', 'slug', 'name'];
 
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
-
     protected static function newFactory(): CountryFactory
     {
         return CountryFactory::new();
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
     }
 }

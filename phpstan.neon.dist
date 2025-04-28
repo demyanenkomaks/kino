@@ -9,11 +9,24 @@ parameters:
         - app/
         - bootstrap/
         - config/
+        - lang/
         - database/
         - Modules/
         - public/
+        - resources/
         - routes/
+        - tests/
 
-    excludePaths:
-        - tests/*/*
-        - Modules/*/tests/*/*
+    ignoreErrors:
+       -
+            message: '#Call to method [a-zA-Z0-9\\_]+\(\) on an unknown class static.#'
+            identifier: class.notFound
+            paths:
+                - Modules\Kino\tests\Feature\Filament\Resources\CategoriesTest.php
+                - Modules\Kino\tests\Feature\Filament\Resources\CountriesTest.php
+       -
+            message: '#Call to an undefined method PHPUnit\\Framework\\TestCase\:\:[a-zA-Z0-9\\_]+\(\).#'
+            identifier: method.notFound
+            paths:
+                - Modules\Kino\tests\Feature\Filament\Resources\CategoriesTest.php
+                - Modules\Kino\tests\Feature\Filament\Resources\CountriesTest.php

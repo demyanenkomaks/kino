@@ -25,7 +25,8 @@ use Modules\Kino\Database\Factories\CategoryFactory;
  */
 class Category extends Model
 {
-    use HasActive, HasFactory;
+    use HasActive;
+    use HasFactory;
 
     protected $table = 'kino_categories';
 
@@ -33,10 +34,6 @@ class Category extends Model
      * The attributes that are mass assignable.
      */
     protected $fillable = ['is_active', 'order', 'slug', 'name', 'title', 'description'];
-
-    protected $casts = [
-        'is_active' => 'boolean',
-    ];
 
     protected static function newFactory(): CategoryFactory
     {
@@ -48,7 +45,7 @@ class Category extends Model
      */
     public function mainCategories(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'kino_category_sub', 'sub_category_id', 'category_id')
+        return $this->belongsToMany(__CLASS__, 'kino_category_sub', 'sub_category_id', 'category_id')
             ->withPivot('order');
     }
 
@@ -58,8 +55,15 @@ class Category extends Model
     public function categories(): BelongsToMany
     {
         /* @phpstan-ignore return.type */
-        return $this->belongsToMany(Category::class, 'kino_category_sub', 'category_id', 'sub_category_id')
+        return $this->belongsToMany(__CLASS__, 'kino_category_sub', 'category_id', 'sub_category_id')
             ->withPivot(['order', 'title', 'description'])
             ->orderBy('kino_category_sub.order');
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+        ];
     }
 }

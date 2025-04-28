@@ -10,29 +10,29 @@ use Modules\Kino\Models\Country;
 
 use function Pest\Livewire\livewire;
 
-it('открывается страница со списком', function () {
+it('открывается страница со списком', function (): void {
     livewire(ListCountries::class)
         ->assertSuccessful();
 });
 
-it('открывается страница для создания', function () {
+it('открывается страница для создания', function (): void {
     livewire(CreateCountry::class)
         ->assertSuccessful();
 });
 
-it('открывается страница для редиктирования', function () {
+it('открывается страница для редактирования', function (): void {
     $record = Country::factory()->create();
 
     livewire(EditCountry::class, ['record' => $record->getRouteKey()])
         ->assertSuccessful();
 });
 
-it('имеется столбец в списке', function (string $column) {
+it('имеется столбец в списке', function (string $column): void {
     livewire(ListCountries::class)
         ->assertTableColumnExists($column);
 })->with(['id', 'order', 'is_active', 'name', 'slug', 'created_at', 'updated_at']);
 
-it('отображается столбец в списке', function (string $column) {
+it('отображается столбец в списке', function (string $column): void {
     livewire(ListCountries::class)
         ->assertCanRenderTableColumn($column);
 })->with(['name']);
@@ -48,7 +48,7 @@ it('отображается столбец в списке', function (string $
 //        ->assertCanSeeTableRecords($records->sortByDesc($column), inOrder: true);
 // })->with(['name']);
 
-it('поиск по столбцу', function (string $column) {
+it('поиск по столбцу', function (string $column): void {
     $records = Country::factory(5)->create();
 
     $value = $records->first()->{$column};
@@ -59,7 +59,7 @@ it('поиск по столбцу', function (string $column) {
         ->assertCanNotSeeTableRecords($records->where($column, '!=', $value));
 })->with(['name', 'slug']);
 
-it('создание записи', function () {
+it('создание записи', function (): void {
     $record = Country::factory()->make();
 
     livewire(CreateCountry::class)
@@ -77,7 +77,7 @@ it('создание записи', function () {
     ]);
 });
 
-it('редактирование записи', function () {
+it('редактирование записи', function (): void {
     $record = Country::factory()->create();
     $newRecord = Country::factory()->make();
 
@@ -96,7 +96,7 @@ it('редактирование записи', function () {
     ]);
 });
 
-it('удаление записи', function () {
+it('удаление записи', function (): void {
     $record = Country::factory()->create();
 
     livewire(EditCountry::class, ['record' => $record->getRouteKey()])
@@ -106,7 +106,7 @@ it('удаление записи', function () {
     $this->assertModelMissing($record);
 });
 
-it('массовое удаление записей', function () {
+it('массовое удаление записей', function (): void {
     $records = Country::factory(5)->create();
 
     livewire(ListCountries::class)
@@ -118,7 +118,7 @@ it('массовое удаление записей', function () {
     }
 });
 
-it('валидация required', function (string $column) {
+it('валидация required', function (string $column): void {
     livewire(CreateCountry::class)
         ->fillForm([$column => null])
         ->assertActionExists('create')
@@ -126,7 +126,7 @@ it('валидация required', function (string $column) {
         ->assertHasFormErrors([$column => ['required']]);
 })->with(['name', 'slug']);
 
-it('валидация max length', function (string $column) {
+it('валидация max length', function (string $column): void {
     livewire(CreateCountry::class)
         ->fillForm([$column => Str::random(256)])
         ->assertActionExists('create')

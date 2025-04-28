@@ -4,20 +4,27 @@ namespace Modules\Kino\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Modules\Kino\Models\Category;
+use Random\RandomException;
 
+/**
+ * @extends Factory<Category>
+ */
 class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      */
-    protected $model = \Modules\Kino\Models\Category::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
+     *
+     * @throws RandomException
      */
     public function definition(): array
     {
-        $title = fake()->words(rand(1, 2), true);
+        $title = fake()->words(random_int(1, 2), true);
 
         return [
             'name' => $title,
@@ -29,7 +36,7 @@ class CategoryFactory extends Factory
 
     public function notActive(): Factory
     {
-        return $this->state(function (array $attributes) {
+        return $this->state(function () {
             return [
                 'is_active' => false,
             ];

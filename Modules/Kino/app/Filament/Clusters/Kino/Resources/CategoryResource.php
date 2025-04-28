@@ -141,7 +141,7 @@ class CategoryResource extends Resource
                     ->queries(
                         true: fn (Builder $query) => $query->has('categories'),
                         false: fn (Builder $query) => $query->has('mainCategories'),
-                        blank: fn (Builder $query) => $query,
+                        blank: fn (Builder $query): \Illuminate\Database\Eloquent\Builder => $query,
                     ),
                 ...CreateUpdateFilters::make(),
             ])
@@ -187,7 +187,7 @@ class CategoryResource extends Resource
                 ->required()
                 ->maxLength(255)
                 ->live(onBlur: true)
-                ->afterStateUpdated(function (Set $set, ?string $state, string $operation) {
+                ->afterStateUpdated(function (Set $set, ?string $state, string $operation): void {
                     if ($operation === 'create') {
                         $set('slug', Str::slug($state));
                     }
@@ -200,7 +200,7 @@ class CategoryResource extends Resource
                 ->suffixActions([
                     Action::make('Обновить')
                         ->icon('heroicon-o-arrow-path')
-                        ->action(function (Get $get, Set $set) {
+                        ->action(function (Get $get, Set $set): void {
                             $set('slug', Str::slug($get('name')));
                         }),
                 ]),

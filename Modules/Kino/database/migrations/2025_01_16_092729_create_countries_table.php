@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kino_countries', function (Blueprint $table) {
+        Schema::create('kino_countries', function (Blueprint $table): void {
             $table->id();
             $table->timestamp('created_at')->useCurrent()->comment('Добавлена');
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate()->comment('Отредактирована');

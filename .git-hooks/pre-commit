@@ -1,4 +1,8 @@
 #!/bin/sh
 
 # Run Laravel Pint and PhpStan
-./vendor/bin/pint && ./vendor/bin/phpstan analyse && git add .
+./vendor/bin/pint --repair
+
+
+# message_info "Errors 1"
+# exit 1

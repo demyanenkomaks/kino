@@ -22,7 +22,7 @@ return RectorConfig::configure()
         __DIR__.'/bootstrap/cache',
     ])
     ->withSets([
-        LaravelLevelSetList::UP_TO_LARAVEL_110,
+        LaravelLevelSetList::UP_TO_LARAVEL_120,
     ])
     ->withCodingStyleLevel(10)
     ->withTypeCoverageLevel(10)

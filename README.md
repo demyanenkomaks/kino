@@ -1,9 +1,11 @@
 ## Разработка ведется
 
-| Service | Version |
-|---------|---------|
-| mysql   | 8.0.27  |
-| php     | 8.3     |
+| Service  | Version |
+|----------|---------|
+| mysql    | 8.0.27  |
+| php      | 8.3     |
+| laravel  | 12      |
+| filament | 3       |
 
 ## Разворачивание проекта
 
@@ -17,8 +19,44 @@
 8. Создание пользователя `php artisan make:filament-user`
 9. Готово!
 
+## Команды использующиеся при разработке:
 
-В случае возникновения ошибок с кешом:
+#### Добавляет проверки кода перед commit
+```bash
+git config core.hooksPath .git-hooks
 ```
-composer cache // очищает и создает новый кеш
+
+#### Очищает кеш для laravel и filament
+```bash
+composer cache:clear
+```
+
+#### Обновляет кеш для laravel и filament
+```bash
+composer cache
+```
+
+#### Обновляет и рефакторит PHP-код
+```bash
+composer rector
+```
+
+#### Рефакторит стиль кода
+```bash
+composer pint
+```
+
+#### Показывает ошибки в коде
+```bash
+composer phpstan
+```
+
+#### Запускает тест кейсы
+```bash
+composer pest
+```
+
+#### Запускает команды rector, pint и phpstan (эти проверки выполняются перед commit)
+```bash
+composer fix
 ```
